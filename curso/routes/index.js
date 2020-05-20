@@ -42,4 +42,17 @@ router
     res.redirect('/pagar')
   })
 
+  router
+  .get('/pagar', (req, res) => { res.render('pagar')})
+  .post('/pagar', (req, res, next) => { 
+    let pagar= req.body.pagar
+    if (pagar == 'Efectivo') { 
+      transaccion.monto = calculo(transaccion.monto)
+      transaccion.pago = pagar
+    }else{
+      transaccion.pago = 'Tarjeta de credito'
+    }
+    res.redirect('/resultados')
+  })
+
 module.exports = router;
