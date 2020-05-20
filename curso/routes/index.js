@@ -54,5 +54,7 @@ router
     }
     res.redirect('/resultados')
   })
-
+  router.get('/resultados', (req, res) => {
+    res.render('resultados', {transaccion})
+  })
 module.exports = router;
